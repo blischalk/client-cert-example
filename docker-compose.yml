@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  nginx:
+    build: "./nginx"
+    ports:
+      - "443:443"
+    depends_on:
+      - "goservice"
+  goservice:
+    build:
+      context: .
+      dockerfile: Dockerfile-gin
+    image: client-cert-gin
+    ports:
+      - "8080"
